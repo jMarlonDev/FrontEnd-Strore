@@ -1,0 +1,269 @@
+:root{
+	--primario: #9C27B0;
+	--primarioOscuro:#89119D;
+	--secundario:#FFCE00;
+	--secundarioOscuro: rgb(233,287,3);
+	--blanco:#FFF;
+	--negro:#000;
+
+
+	--fuentePrincipal:'Staatliches', cursive;
+}
+
+
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* Este font-size hace que podamos convertir 1rem = 10px;*/
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/** Globales **/
+body{
+	background-color: var(--primario);
+	font-size: 1.6rem;/*esto ente valor en rem serian 16px;*/
+	line-height: 1.5;
+}
+
+p{
+	font-size: 1.8rem; /*esto en rem seria 18px;*/
+	font-family: Arial, Helvetica, sans-serif;
+	color: var(--blanco);
+}
+a{
+	text-decoration: none;
+}
+img{
+	width: 100%;
+}
+
+.contenedor{
+	max-width: 120rem; /*esto en rem serian 1200px;*/
+	margin: 0 auto; /*este parte de aqui la utlizamos para centrar todo el contenido*/
+}
+
+h1,h2,h3{
+	text-align: center;
+	color: var(--secundario);
+	font-family: var(--fuentePrincipal);
+}
+
+h1{
+	font-size: 4rem; /* 40px*/
+}
+
+h2{
+	font-size: 3.2rem; /* 32px*/
+}
+
+h3{
+	font-size: 2.4rem; /* 24px */
+}
+
+/** Header **/
+.header{
+	display: flex;  /*esto es para centar horizontalmente*/
+	justify-content: center;
+}
+
+.header__logo{
+	margin: 3rem 0;
+}
+
+/*Footer */
+.footer{
+	background-color: var(--primarioOscuro);
+	padding: 1rem 0;
+	margin-top: 2rem;
+}
+
+.footer__texto{
+	font-family: var(--fuentePrincipal);
+	text-align: center; /*con text-align puedo centrar en elemento solo cuando es texto*/
+	font-size: 2.2rem; /*22px*/
+}
+
+
+/* Navegacion */
+.navegacion{
+	background-color: var(--primarioOscuro);
+	padding: 1rem 0;
+	display: flex;
+	justify-content: center;
+	gap: 2rem; /*con a propiedAd gap podemos separar los elemntos horizontalmente con flex*/
+}
+
+.navegacion__enlace{
+	font-family: var(--fuentePrincipal);
+	color: var(--blanco);
+	font-size: 3rem; /* 30px */
+}
+
+.navegacion__enlace--activo,
+.navegacion__enlace:hover{
+	color: var(--secundario);
+}
+
+/* Grid */
+.grid{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 3rem;
+}
+@media(min-width:768px){
+	.grid{
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+/* Productos */
+.producto{
+	background-color: var(--primarioOscuro);
+	padding: 1rem;
+}
+
+
+.producto__nombre{
+	font-size: 4rem;
+}
+
+.producto__precio{
+	font-size: 2.8rem;
+	color: var(--secundario);
+}
+
+.producto__nombre,
+.producto__precio{
+	font-family: var(--fuentePrincipal);
+	margin: 1rem 0;
+	text-align: center;
+	line-height: 1.2;
+}
+
+/* Graficos */
+.grafico{
+	/*Aqui en el proyecto cuando las imagenes ocupan un espacio pero como que
+	se repite varias veces  en un solo espacio para quitar esa repeticion ponemos
+	la propiedad background-repeat: no-repeat;
+
+	otra cosa es que cuando hacemos esto pues la imagen se corta, y ya la imagen no 
+	ocupa todo el espacio que tiene para solucionar este problema ponemos la 
+	propiedad background-size: cover;*/
+	min-height: 30rem;
+	background-repeat: no-repeat;
+	background-size: cover;
+	grid-column: 1 / 3;
+}
+
+.grafico--camisas{
+	/*Aqui si yo quiero posisionar los elementos con la propiedad grid en diferente posicion ya sea si lo quiero
+	poner de una fila a otra o de columna 
+	en este caso si utilizamos la propiedad grid-row lo que vamos hacer es posisionar el elemnto
+	en fila en este caso el elemento va ir del punto 2 al 3 en fila*/
+	grid-row: 2 / 3;
+	background-image: url(../img/grafico1.jpg);
+}
+
+.grafico--node{
+	background-image: url(../img/grafico2.jpg);
+	grid-row: 8 / 9;
+}
+
+@media(min-width:768px){
+	.grafico--node{
+	grid-row: 5 / 6;
+	grid-column: 2 / 4;
+}
+
+}
+
+/* Nosotros */
+
+.nosotros{
+	display: grid;
+	grid-template-rows: repeat(2, auto);
+}
+
+@media(min-width: 768px){
+	.nosotros{
+		grid-template-columns: repeat(2, 1fr);
+		column-gap: 2rem;
+}	
+}
+
+.nosotros__imagen{
+	grid-row: 1 / 2;
+}
+
+@media(min-width:768px){
+	.nosotros__imagen{
+		grid-column: 2 / 3;
+	}
+}
+
+/*Aquí vamos a trabajar con los Bloques*/
+.bloques{
+	/*conla propiedad de grid template column lo que hago
+	es poner poner el valor de como queremos que se dividan  las columas que creemos*/
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem;
+}
+
+@media(min-width:768px){
+	.bloques{
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+.bloque{
+	text-align: center;
+}
+
+
+.bloque__titulo{
+	margin: 0;
+}
+
+/* aqui vamos a trabajar con la pagina de la camisa*/
+@media (min-width:768px){
+	.camisa{
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		column-gap: 2rem;
+	}
+}
+
+.formulario{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem;
+}
+
+.formulario__campo{
+	border: 1rem solid var(--primarioOscuro);
+	background-color: transparent;
+	color: var(--blanco);
+	font-size: 2rem;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 1rem;
+	appearance: none;
+}
+
+.formulario__submit{
+	background-color: var(--secundario);
+	border: none;
+	font-size: 2rem;
+	font-family: var(--fuentePrincipal);
+	padding: 2rem;
+	transition: background-color .3s ease;
+	grid-column: 1 / 3;
+}
+
+.formulario__submit:hover{
+	cursor: pointer;
+	background-color: var(--secundarioOscuro);
+}
